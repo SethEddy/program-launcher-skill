@@ -10,7 +10,7 @@ __author__ = 'Mr Who'
 LOGGER = getLogger(__name__)
 
 
-class HelloWorldSkill(MycroftSkill):
+class ProgramLauncherSkill(MycroftSkill):
     def __init__(self):
         super(ProgramLauncherSkill, self).__init__(name="ProgramLauncherSkill")
 
