@@ -30,8 +30,9 @@ class ProgramLauncherSkill(MycroftSkill):
     
     def handle_launch_intent(self, message):
         #result = message.data.get('utterance')
-        self.speak_dialog("Launch", prog_name)
-        subprocess.call(['gtk-launch', prog_name])
+        program = self.prog_name()
+        self.speak_dialog("Launch", program)
+        subprocess.call(['gtk-launch', program])
 
     def stop(self):
         pass
