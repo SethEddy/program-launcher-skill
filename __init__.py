@@ -18,7 +18,7 @@ class ProgramLauncherSkill(MycroftSkill):
         #self.add_event('recognizer_loop:utterance', self.handle_utterance)
 
         launch_intent = IntentBuilder("LaunchIntent"). \
-            require("launchKeyword").build()
+            require("LaunchKeyword").build()
         self.register_intent(launch_intent, self.handle_launch_intent)
         
     def prog_name(self):
