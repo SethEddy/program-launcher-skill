@@ -28,7 +28,7 @@ class ProgramLauncherSkill(MycroftSkill):
                 prog = fnmatch.filter(os.listdir('/usr/share/applications/'), "*" + text + "*.*")
                 return "'%s'" % "".join(prog)
     
-    def handle_Launch_intent(self, message):
+    def handle_launch_intent(self, message):
         #result = message.data.get('utterance')
         self.speak_dialog("Launch", prog_name)
         subprocess.call(['gtk-launch', prog_name])
