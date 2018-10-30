@@ -16,7 +16,7 @@ class HelloWorldSkill(MycroftSkill):
 
     def initialize(self):
         self.add_event('recognizer_loop:utterance', self.handle_utterance)
-		
+
         launch_intent = IntentBuilder("LaunchIntent"). \
             require("launchKeyword").build()
         self.register_intent(launch_intent, self.handle_launch_intent)
