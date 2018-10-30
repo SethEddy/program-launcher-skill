@@ -1,2 +1,1 @@
-I am now launching, {{result}}
-I could not find the program, {{result}}
+Now launching, {{prog_name}}
