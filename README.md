@@ -10,7 +10,6 @@ Looks in the /usr/share/applications/ directory for the requested program and if
  - "Run program minecraft"
  - "Open steam"
  - "Launch text editor"
- - "Y"
 
 
 ## Credits
