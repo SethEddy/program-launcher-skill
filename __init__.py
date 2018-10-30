@@ -24,14 +24,14 @@ class ProgramLauncherSkill(MycroftSkill):
         
     def handle_launch_intent(self, message):
         utterance = message.data.get('utterance')
-        xer = re.compile(r'\blaunch program\b', re.IGNORECASE)
+        xer = re.compile(r'\blaunch program \b', re.IGNORECASE)
         utter = xer.sub('', utterance)
         rex = re.compile(r'\b \b', re.IGNORECASE)
         text = rex.sub('*', utter)
         prog = fnmatch.filter(os.listdir('/usr/share/applications/'), "*" + text + "*.*")
         program = ''.join(prog)
         self.speak_dialog("launch")
-        subprocess.call(['gtk-launch', utter])
+        subprocess.call(['gtk-launch', program])
 
     def stop(self):
         pass
