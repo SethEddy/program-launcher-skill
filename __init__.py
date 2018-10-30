@@ -29,7 +29,7 @@ class ProgramLauncherSkill(MycroftSkill):
         rex = re.compile(r'\b \b', re.IGNORECASE)
         text = rex.sub('*', utter)
         prog = fnmatch.filter(os.listdir('/usr/share/applications/'), "*" + text + "*.*")
-        program = "'%s'" % "".join(prog)
+        program = ''.join(prog)
         self.speak_dialog("launch")
         subprocess.call(['gtk-launch', program])
 
