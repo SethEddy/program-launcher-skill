@@ -12,9 +12,9 @@ __author__ = 'MrWho'
 LOGGER = getLogger(__name__)
 
 
-class HelloWorldSkill(MycroftSkill):
+class ProgramLauncher(MycroftSkill):
     def __init__(self):
-        super(ProgramLauncherSkill, self).__init__(name="ProgramLauncherSkill")
+        super(ProgramLauncherSkill, self).__init__(name="ProgramLauncher")
 
     def initialize(self):
         launch_intent = IntentBuilder("LaunchIntent"). \
@@ -39,5 +39,5 @@ class HelloWorldSkill(MycroftSkill):
 
 
 def create_skill():
-    return ProgramLauncherSkill()
+    return ProgramLauncher()
 
