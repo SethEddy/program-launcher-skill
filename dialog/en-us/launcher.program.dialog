@@ -1,2 +1,2 @@
-I am now launching firefox
-I could not find the program firefox
+I am now launching, {{result}}
+I could not find the program, {{result}}
