@@ -31,7 +31,7 @@ class ProgramLauncherSkill(MycroftSkill):
         prog = fnmatch.filter(os.listdir('/usr/share/applications/'), "*" + text + "*.*")
         program = ''.join(prog)
         self.speak_dialog("launch")
-        subprocess.call(['gtk-launch', program])
+        subprocess.call(['gtk-launch', utter])
 
     def stop(self):
         pass
