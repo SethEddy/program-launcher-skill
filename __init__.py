@@ -21,16 +21,12 @@ class ProgramLauncherSkill(MycroftSkill):
             require("LaunchKeyword").build()
         self.register_intent(launch_intent, self.handle_launch_intent)
         
-    def prog_name(self, message):
+    def handle_launch_intent(self, message):
         utterance = message.data.get('utterance')
         rex = re.compile(r'\b \b', re.IGNORECASE)
         text = rex.sub('*', utterance)
         prog = fnmatch.filter(os.listdir('/usr/share/applications/'), "*" + text + "*.*")
-        return "'%s'" % "".join(prog)
-    
-    def handle_launch_intent(self, message):
-        #result = message.data.get('utterance')
-        program = prog_name()
+        program = "'%s'" % "".join(prog)
         self.speak_dialog("Launch", program)
         subprocess.call(['gtk-launch', program])
 
