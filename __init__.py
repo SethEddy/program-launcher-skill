@@ -1,36 +1,37 @@
-
 import re
 import os
 import fnmatch
-import subprocess
 from adapt.intent import IntentBuilder
 from mycroft.skills.core import MycroftSkill
 from mycroft.util.log import getLogger
 
-__author__ = 'MrWho'
+__author__ = 'Mr Who'
 
 LOGGER = getLogger(__name__)
 
 
-class ProgramLauncher(MycroftSkill):
+class HelloWorldSkill(MycroftSkill):
     def __init__(self):
-        super(ProgramLauncherSkill, self).__init__(name="ProgramLauncher")
+        super(ProgramLauncherSkill, self).__init__(name="ProgramLauncherSkill")
 
     def initialize(self):
+		self.add_event('recognizer_loop:utterance', self.handle_utterance)
+		
         launch_intent = IntentBuilder("LaunchIntent"). \
             require("launchKeyword").build()
         self.register_intent(launch_intent, self.handle_launch_intent)
         
-    def prog_name(self, message):
-		text = message.data.get('utterance')
+    def prog_name(self):
+		utterance = message.data.get('utterance')
 		rex = re.compile(r'\b \b', re.IGNORECASE)
-		text_fix = rex.sub('*', text)	
-		prog = fnmatch.filter(os.listdir('/usr/share/applications/'), "*" + text_fix + "*.*")
-		return ("'%s'" % "".join(program))
+		text = rex.sub('*', utterance)	
+		prog = fnmatch.filter(os.listdir('/usr/share/applications/'), "*" + text + "*.*")
+		return "'%s'" % "".join(prog)
     
     
     def handle_Launch_intent(self, message):
-        self.speak_dialog("Launch", 'utterance')
+		#result = message.data.get('utterance')
+        self.speak_dialog("Launch", prog_name)
         subprocess.call(['gtk-launch', prog_name])
 		
 
@@ -39,5 +40,4 @@ class ProgramLauncher(MycroftSkill):
 
 
 def create_skill():
-    return ProgramLauncher()
-
+    return ProgramLauncherSkill()
