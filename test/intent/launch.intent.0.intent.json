@@ -1,0 +1,8 @@
+{
+    "expected_dialog": "launch",
+    "intent": {
+        "prog_name": "file manager"
+    },
+    "intent_type": "launch.intent",
+    "utterance": "launch program file manager"
+}
