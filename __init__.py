@@ -21,7 +21,7 @@ class ProgramLauncherSkill(MycroftSkill):
             require("LaunchKeyword").build()
         self.register_intent(launch_intent, self.handle_launch_intent)
         
-    def prog_name(self):
+    def prog_name(self, message):
                 utterance = message.data.get('utterance')
                 rex = re.compile(r'\b \b', re.IGNORECASE)
                 text = rex.sub('*', utterance)
