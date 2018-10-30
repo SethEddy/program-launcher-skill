@@ -1,6 +1,7 @@
 import re
 import os
 import fnmatch
+import subprocess
 from adapt.intent import IntentBuilder
 from mycroft.skills.core import MycroftSkill
 from mycroft.util.log import getLogger
