@@ -28,8 +28,10 @@ class ProgramLauncherSkill(MycroftSkill):
         utter = xer.sub('', utterance)
         rex = re.compile(r'\b \b', re.IGNORECASE)
         text = rex.sub('*', utter)
-        prog = fnmatch.filter(os.listdir('/usr/share/applications/'), "*" + text + "*.*")
-        program = ''.join(prog)
+        dir1 = fnmatch.filter(os.listdir('/usr/share/applications/'), "*" + text + "*.*")
+        dir2 = fnmatch.filter(os.listdir('/home/kronos/.local/share/applications/'), "*" + text + "*.*")
+        dirs = dir1 + dir2
+        program = ''.join(dirs)
         self.speak_dialog("launch")
         subprocess.call(['gtk-launch', program])
 
